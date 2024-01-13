@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Source Code - Stewbot</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="global.css" rel="stylesheet"></link>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/styles/atom-one-dark.min.css">
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script>
+    </head>
+    <body>
+        <h1 class="centered">Source Code</h1>
+        <div class="content">
+            <img src="https://github.com/favicon.ico" style="background-color:white;float:right;border-radius:50%;" width="5%">
+            <h1><a href="https://github.com/KestronProgramming/Stewbot">Github Repository for Stewbot</a></h1>
+            There is a Github Repository available containing all of the following as well as additional essential files and instructions for creating <b>env.json</b> to run locally.
+        </div>
+        <div class="content">
+            <input type="button" class="bannerBtn" value="View env.json" onclick="roll()"><br><br>
+            <h2>Stewbot <b>index.js</b></h2>
+            <pre>
+                <code class="language-js" id="codeInsert"></code>
+            </pre>
+        </div>
+        <script src="headAndFoot.js"></script>
+        <script>
+            fetch("https://raw.githubusercontent.com/KestronProgramming/Stewbot/main/index.js").then(d=>d.text()).then(d=>{
+                document.getElementById("codeInsert").innerHTML=`\n${d}`;
+            });
+            function roll(){
+                document.body.innerHTML=`<video width="100%" autoplay><source src="roll.mp4" type="video/mp4"></video>${document.body.innerHTML}`;
+            }
+        </script>
+    </body>
+</html>
