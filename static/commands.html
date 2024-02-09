@@ -160,9 +160,16 @@
         </div>
         <div class="command brown">
             <h6>Informational</h6>
-            <h2>/counting_leaderboard</h2>
+            <h2>/leaderboard <span class="required">which</span> <span class="optional">who</span></h2>
             <p>
-                View the ten servers with the highest numbers in the counting game, and your server's place in the list.
+                Get a leaderboard for the top ten highest counting servers, the people who have been filtered the least, made starboard the most, or has the highest level-ups. If you specify who on the command, it will give that user's specific statistics for the relevant leaderboard.
+            </p>
+        </div>
+        <div class="command brown">
+            <h6>Informational</h6>
+            <h2>/rank <span class="optional">target</span></h2>
+            <p>
+                Display the server level-up rank card for you or the specified target user.
             </p>
         </div>
         <h1 class="centered" id="contextCommands">Context Menu Commands</h1>
@@ -307,6 +314,13 @@
             <h2>/auto-join-roles</h2>
             <p>
                 Specify roles that should be added to every new user when they join the server. The roles to add will be specified after using the command.
+            </p>
+        </div>
+        <div class="command blue">
+            <h6>Configuration</h6>
+            <h2>/levels_config <span class="required">active</span> <span class="optional">channel</span> <span class="optional">message</span> <span class="optional">channel_or_dm</span></h2>
+            <p>
+                Configure level ups for your server. You can specify what you want to be said upon level-ups. The bot will replace "${USER}" with pinging the user, "${USERNAME}" with the user's username, and "${LVL}" with the level the suer made it to. The "channel_or_dm" option specifies whether the level up message should be sent to a channel (which must have been specified at some time) or the user's DMs.
             </p>
         </div>
         <h1 class="centered" id="lockedContextCommands">Context Menu Commands that need permissions</h1>
