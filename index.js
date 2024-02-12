@@ -9,7 +9,7 @@ site.listen(80,()=>{
 site.use(express.static(path.join(__dirname,"./static")));
 site.use(favicon(path.join(__dirname,"./static/stewbot.jpg")));
 
-var pages=["source","add","pricing","features","commands"];
+var pages=["source","add","pricing","features","commands","tos","privacy"];
 pages.forEach(page=>{
     site.get(`/${page}`,(req,res)=>{
         res.send(fs.readFileSync(`./static/${page}.html`,'utf-8'));
