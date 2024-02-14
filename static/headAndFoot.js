@@ -6,4 +6,5 @@ document.body.innerHTML=`
 </div>
 <br>
 ${document.body.innerHTML}
-<footer>Developed by <a href="https://github.com/Kestron06">Kestron</a>. Special thanks to <a href="https://github.com/Reginald-Gillespie">WKoA</a> for providing hosting. Join our Discord support server here: <a href="https://discord.gg/k3yVkrrvez">Discord Support Server</a>. <a href="/tos">Terms of Service</a>/<a href="/privacy">Privacy Policy</a></footer>`;
+<footer>Developed by <a href="https://github.com/Kestron06">Kestron</a>. Special thanks to <a href="https://github.com/Reginald-Gillespie">WKoA</a> for providing hosting. Stewbot in the <a href="https://discord.com/application-directory/966167746243076136
+">App Directory</a>. Join our Discord support server here: <a href="https://discord.gg/k3yVkrrvez">Discord Support Server</a>. <a href="/tos">Terms of Service</a>/<a href="/privacy">Privacy Policy</a></footer>`;
