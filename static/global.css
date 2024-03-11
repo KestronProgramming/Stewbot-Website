@@ -145,12 +145,10 @@ body{
 .fr{
     float:right;
     width:10%;
-    padding-left:1rem;
 }
 .fl{
     float:left;
     width:10%;
-    padding-right:1rem;
 }
 .tier h1{
     text-align:center;
