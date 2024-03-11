@@ -70,6 +70,7 @@ a:hover{
 }
 .content img{
     width:30%;
+    margin:1rem;
 }
 .command{
     width:90%;
@@ -147,12 +148,10 @@ body{
 .fr{
     float:right;
     width:30%;
-    padding-left:1rem;
 }
 .fl{
     float:left;
     width:30%;
-    padding-right:1rem;
 }
 .tier h1{
     text-align:center;
