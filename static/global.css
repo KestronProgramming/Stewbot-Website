@@ -258,6 +258,7 @@ input{
     font-size:2.5rem;
     font-family:fantasy;
     color:#000064;
+    margin-left:auto;
 }
 #donateButton:hover{
     width:25%;
