@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Pricing - Stewbot</title>
+        <link href="global.css" rel="stylesheet" media="only screen and (min-width: 480px)"></link>
+        <link rel="stylesheet" media="only screen and (max-width: 480px)" href="mobile.css"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <meta content="Pricing for Stewbot" property="og:title" />
+        <meta content="List of the free pricing options for Stewbot, the bot designed to keep servers fun and engaging while also providing moderators the tools to keep things clean and safe." property="og:description" />
+        <meta content="https://stewbot.kestron.software" property="og:url" />
+        <meta content="https://stewbot.kestron.software/stewbot.jpg" property="og:image" />
+        <meta content="#006400" data-react-helmet="true" name="theme-color" />
+        <style>
+        </style>
+    </head>
+    <body>
+        <%- header %>
+        <h1 class="centered">Pricing</h1>
+        <div class="tierWrapper">
+            <div class="tier">
+                <div class="plan">
+                    <h1>Free</h1>
+                    <h3>$0/Month</h3>
+                </div>
+                <ul id="free">
+                </ul>
+                <a class="bannerBtn" href="add">Install Stewbot</a>
+            </div>
+            <div class="tier">
+                <div class="plan">
+                    <h1>Pro</h1>
+                    <h3>$0/Month</h3>
+                </div>
+                <ul id="pro">
+                </ul>
+                <a class="bannerBtn" href="add">Install Stewbot</a>
+            </div>
+            <div class="tier">
+                <div class="plan">
+                    <h1>VIP</h1>
+                    <h3>$0/Month</h3>
+                </div>
+                <ul id="vip">
+                </ul>
+                <a class="bannerBtn" href="add">Install Stewbot</a>
+            </div>
+            <div class="tier">
+                <div class="plan">
+                    <h1>Exclusive</h1>
+                    <h3>$0/Month</h3>
+                </div>
+                <ul id="exclusive">
+                </ul>
+                <a class="bannerBtn" href="add">Install Stewbot</a>
+            </div>
+        </div>
+        <h1 class="centered" id="dontWait"><i>It's all free</i>! What are you waiting for?</h1>
+        <div hidden="true" id="helpCommands"><%= JSON.stringify(helpCommands) %></div>
+        <script>
+            var helpCommands=JSON.parse(document.getElementById("helpCommands").textContent);
+            var sortedCommands=[[],[],[],[]];
+            var counter=sortedCommands.length-1;
+            while(helpCommands.length>0){
+                sortedCommands[counter].push(helpCommands[0].name);
+                helpCommands.splice(0,1);
+                counter--;
+                if(counter<0){
+                    counter=sortedCommands.length-1;
+                }
+            }
+            sortedCommands[0].push(`<h2><i>And everything else in the other plans!</h2></i>`);
+            sortedCommands[1].push(`<h2><i>And everything else in the other plans!</h2></i>`);
+            sortedCommands[2].push(`<h2><i>And everything else in the other plans!</h2></i>`);
+            sortedCommands[3].push(`<h2><i>And everything else in the other plans!</h2></i>`);
+            document.getElementById("free").innerHTML=sortedCommands[0].map(a=>`<li>${a}</li>`).join("");
+            document.getElementById("pro").innerHTML=sortedCommands[1].map(a=>`<li>${a}</li>`).join("");
+            document.getElementById("vip").innerHTML=sortedCommands[2].map(a=>`<li>${a}</li>`).join("");
+            document.getElementById("exclusive").innerHTML=sortedCommands[3].map(a=>`<li>${a}</li>`).join("");
+        </script>
+        <%- footer %>
+    </body>
+</html>

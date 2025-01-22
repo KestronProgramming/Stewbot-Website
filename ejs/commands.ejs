@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Commands - Stewbot</title>
+        <link href="global.css" rel="stylesheet" media="only screen and (min-width: 480px)"></link>
+        <link rel="stylesheet" media="only screen and (max-width: 480px)" href="mobile.css"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="Stewbot Commands List" property="og:title" />
+        <meta content="The full command list for Stewbot, the bot designed to keep servers fun and engaging while also providing moderators the tools to keep things clean and safe." property="og:description" />
+        <meta content="https://stewbot.kestron.software" property="og:url" />
+        <meta content="https://stewbot.kestron.software/stewbot.jpg" property="og:image" />
+        <meta content="#006400" data-react-helmet="true" name="theme-color" />
+        <style>
+            select{
+                box-sizing:border-box;
+                background-color:#006400;
+                color:#00d7ff;
+                font-size: 1.5rem;
+                transition: 0.3s;
+                text-align:center;
+                cursor:pointer;
+                text-decoration:none;
+                border-style:solid;
+                border-color: rgb(175,175,175) rgb(0,0,0) rgb(0,0,0) rgb(175,175,175);
+            }
+            select:hover{
+                background-color:#00d7ff;
+                color:#006400;
+                text-decoration:none;
+            }
+            select:active{
+                border-color:  rgb(0,0,0) rgb(175,175,175) rgb(175,175,175) rgb(0,0,0);
+            }
+
+            option{
+                box-sizing:border-box;
+                background-color:#006400;
+                color:#00d7ff;
+                font-size: 1.5rem;
+                transition: 0.3s;
+                text-align:center;
+                text-decoration:none;
+                border-style:solid;
+                border-color: rgb(175,175,175) rgb(0,0,0) rgb(0,0,0) rgb(175,175,175);
+            }
+            option:hover{
+                background-color:#00d7ff;
+                color:#006400;
+                text-decoration:none;
+                cursor:pointer;
+            }
+            option:active{
+                border-color:  rgb(0,0,0) rgb(175,175,175) rgb(175,175,175) rgb(0,0,0);
+            }
+
+            input[type="checkbox"]{
+                accent-color:#00ff00;
+            }
+        </style>
+    </head>
+    <body>
+        <%- header %>
+        <h1 class="centered" id="commands">Commands</h1>
+        <div class="content">
+            <h3>Filters</h3>
+            <ul>
+                Search term: <input placeholder="Search term..." onChange="updateCommandList()" id="searchTerm"><input type="button" value="Search" onclick="updateCommandList()" class="bannerBtn" id="searchButton"><br>
+                Filter Mode: 
+                <select name="filterMode" onchange="updateCommandList()" id="filterMode">
+                    <option value="or">Or</option>
+                    <option value="and">And</option>
+                    <option value="not">Not</option>
+                </select><br>
+                Categories: <% ["General", "Bot", "Information", "Entertainment", "Configuration", "Administration", "Safety", "Context Menu", "Server Only","Module"].forEach(a=>{ %>
+                    <br><input type="checkbox" name="<%= a %>" class="categoriesCheckboxes" checked="true" onchange="updateCommandList()"> <%= a %>
+                <% }); %>
+            </ul>
+        </div>
+        <div id="commandsDiv">
+        </div>
+        <div hidden="true" id="helpCommandsDump"><%= JSON.stringify(helpCommands) %></div>
+        <script>
+            var helpCommands=JSON.parse(document.getElementById("helpCommandsDump").textContent);
+            var colorImportanceOrder=["Module","Context Menu","Safety","Bot","Administration","Configuration","Entertainment","Information","General","Server Only"];
+            var colors=["grey","grey","red","darkCyan","red","blue","darkGreen","brown","brown","brown"];
+            function updateCommandList(){
+                var searchTerm=document.getElementById("searchTerm").value;
+                var mode=document.getElementById("filterMode").value;
+                var cats=document.getElementsByClassName("categoriesCheckboxes");
+                var categories=[];
+                for(var i=0;i<cats.length;i++){
+                    if(cats[i].checked) categories.push(cats[i].name);
+                }
+                var newCommands=structuredClone(helpCommands).filter(command=>{
+                    switch(mode){
+                        case 'and':
+                            var ret=true;
+                            categories.forEach(category=>{
+                                if(!command.helpCategories.includes(category)){
+                                    ret=false;
+                                }
+                            });
+                            return ret&&(command.name.includes(searchTerm)||command.shortDesc.includes(searchTerm)||command.detailedDesc.includes(searchTerm));
+                        break;
+                        case 'or':
+                            var ret=false;
+                            categories.forEach(category=>{
+                                if(command.helpCategories.includes(category)){
+                                    ret=true;
+                                }
+                            });
+                            return ret&&(command.name.includes(searchTerm)||command.shortDesc.includes(searchTerm)||command.detailedDesc.includes(searchTerm));
+                        break;
+                        case 'not':
+                            var ret=true;
+                            categories.forEach(category=>{
+                                if(command.helpCategories.includes(category)){
+                                    ret=false;
+                                }
+                            });
+                            return ret&&(command.name.includes(searchTerm)||command.shortDesc.includes(searchTerm)||command.detailedDesc.includes(searchTerm));
+                        break;
+                    }
+                });
+                var divPrintOut=``;
+                for(var i=0;i<newCommands.length;i++){
+                    var highestPriorityFound=148;
+                    for(var j=0;j<newCommands[i].helpCategories.length;j++){
+                        if(colorImportanceOrder.indexOf(newCommands[i].helpCategories[j])<highestPriorityFound){
+                            highestPriorityFound=colorImportanceOrder.indexOf(newCommands[i].helpCategories[j]);
+                        }
+                    }
+                    divPrintOut+=`
+                        <div class="command ${colors[highestPriorityFound]}">
+                            <h6>${newCommands[i].helpCategories.join(", ")}</h6>
+                            <h2>${newCommands[i].name}</h2>
+                            <h5>${newCommands[i].shortDesc}</h5>
+                            <p>
+                                ${newCommands[i].detailedDesc}
+                            </p>
+                            ${newCommands[i].helpCategories.includes("Context Menu")?`<h5>This is a context menu command. <a href="contextMenu" target="_blank">How to use the context menu</a></h5>`:``}
+                        </div>`;
+                }
+                document.getElementById("commandsDiv").innerHTML=divPrintOut;
+            }
+            updateCommandList();
+        </script>
+        <%- footer %>
+    </body>
+</html>
