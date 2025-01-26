@@ -13,10 +13,21 @@ site.use(favicon(path.join(__dirname,"./static/stewbot.jpg")));
 fs.readdirSync("./ejs").forEach(async page=>{
     site.get(`/${page.split(".")[0]}`,async (req,res)=>{
         var ejsGlobals={
-            "header":`<div id="banner">
+            "header":`<div id="banner-wrapper">
+                    <div id="banner">
                         <a href="/"><img src="stewbot.jpg" id="stewIcon"><img src="banner.png" id="stewBanner"></a><br>
                         <span class="green"><b class="cyan">S</b>teward <b class="cyan">T</b>o <b class="cyan">E</b>xpedite <b class="cyan">W</b>ork</span><br><br>
-                        <a class="bannerBtn" href="features">Features</a><a class="bannerBtn" href="commands">Commands</a><a href="pricing" class="bannerBtn">Pricing</a><a href="add" class="bannerBtn">Install Stewbot</a><a class="bannerBtn" href="/source">Source Code</a><a href="/donate" class="bannerBtn">Donate</a>
+                        <nav class="bannerNav">
+                        <ul style="list-style-type:none;padding:0">
+                          <li><a class="bannerBtn" href="features">Features</a></li>
+                          <li><a class="bannerBtn" href="commands">Commands</a></li>
+                          <li><a href="pricing" class="bannerBtn">Pricing</a></li>
+                          <li><a href="add" class="bannerBtn">Install Stewbot</a></li>
+                          <li><a class="bannerBtn" href="/source">Source Code</a></li>
+                          <li><a href="/donate" class="bannerBtn">Donate</a></li>
+                        </ul>
+                        </nav>
+                    </div>
                     </div>
                     <br>`,
             "footer":`<footer>Developed by <a href="https://github.com/Kestron06">Kestron</a> and <a href="https://github.com/Reginald-Gillespie">WKoA</a>. Find Stewbot in the <a href="https://discord.com/application-directory/966167746243076136
