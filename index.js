@@ -4,7 +4,7 @@ const path=require("path");
 const fs=require("fs");
 const ejs=require("ejs");
 const site=new express();
-site.listen(80,()=>{
+site.listen(process.env?.PORT || 80,()=>{
     console.log("Site online");
 });
 site.use(express.static(path.join(__dirname,"./static")));
