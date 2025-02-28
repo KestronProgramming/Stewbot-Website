@@ -260,3 +260,12 @@ body{
     font-size:3rem;
     color:#006400;
 }
+#moving{
+    width:100%;
+    margin:0.5rem;
+    background-color:rgb(255,255,0);
+    color:#000;
+    text-align:center;
+    height:5rem;
+    font-size:2rem;
+}
