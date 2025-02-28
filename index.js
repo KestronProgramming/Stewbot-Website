@@ -20,7 +20,8 @@ fs.readdirSync("./ejs").forEach(async page=>{
                     </div>
                     <br>`,
             "footer":`<footer>Developed by <a href="https://github.com/Kestron06">Kestron</a> and <a href="https://github.com/Reginald-Gillespie">WKoA</a>. Find Stewbot in the <a href="https://discord.com/application-directory/966167746243076136
-">App Directory</a>. Join our <a href="https://discord.gg/k3yVkrrvez">Discord Support Server here</a>. <a href="/tos">Terms of Service</a>/<a href="/privacy">Privacy Policy</a></footer>`
+">App Directory</a>. Join our <a href="https://discord.gg/k3yVkrrvez">Discord Support Server here</a>. <a href="/tos">Terms of Service</a>/<a href="/privacy">Privacy Policy</a></footer>`,
+	    "curDomain":`${req.protocol}://${req.get('host')}${req.originalUrl}`
         };
         if(page==='pricing.ejs'||page==='commands.ejs'){
             await fetch(`https://raw.githubusercontent.com/KestronProgramming/Stewbot/refs/heads/main/data/helpPages.json`).then(d=>d.text()).then(d=>{
