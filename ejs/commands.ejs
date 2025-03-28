@@ -76,7 +76,8 @@
                     <option value="and">And</option>
                     <option value="not">Not</option>
                 </select><br>
-                Categories: <% ["General", "Bot", "Information", "Entertainment", "Configuration", "Administration", "Safety", "Context Menu", "Server Only","Module"].forEach(a=>{ %>
+                <!-- TODO: pull these categories from the ./commands/modules/Categories.js file of stewbot source -->
+                Categories: <% ["General", "Bot", "Information", "Entertainment", "Configuration", "Administration", "Safety", "Context_Menu", "Server_Only","Module"].forEach(a=>{ %>
                     <br><input type="checkbox" name="<%= a %>" class="categoriesCheckboxes" checked="true" onchange="updateCommandList()"> <%= a %>
                 <% }); %>
             </ul>
@@ -86,7 +87,7 @@
         <div hidden="true" id="helpCommandsDump"><%= JSON.stringify(helpCommands) %></div>
         <script>
             var helpCommands=JSON.parse(document.getElementById("helpCommandsDump").textContent);
-            var colorImportanceOrder=["Module","Context Menu","Safety","Bot","Administration","Configuration","Entertainment","Information","General","Server Only"];
+            var colorImportanceOrder=["Module","Context_Menu","Safety","Bot","Administration","Configuration","Entertainment","Information","General","Server_Only"];
             var colors=["grey","grey","red","darkCyan","red","blue","darkGreen","brown","brown","brown"];
             function updateCommandList(){
                 var searchTerm=document.getElementById("searchTerm").value;
