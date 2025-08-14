@@ -127,7 +127,6 @@ a:hover{
     box-shadow: 0px 5px 5px 1px #00aada77;
 }
 .featuresGrid {
-    margin-inline: 10vw;
     display: grid;
     gap: 1rem;
     grid-template-columns: repeat(auto-fit, minmax(800px, 1fr));
