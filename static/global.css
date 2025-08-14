@@ -1,3 +1,5 @@
+@import "/inputs.css";
+
 html {
     --primary-background: #0b0b11;
     --primary-text: #efefff;
@@ -137,10 +139,10 @@ a:hover{
     display: grid;
     grid-template-columns: 300px 1fr;
 }
-.featureCard:has(img.fr) {
+.featureCard:nth-child(even) {
     grid-template-columns: 1fr 300px;
 }
-.featureCard img.fr {
+.featureCard:nth-child(even) img {
     grid-column: 2;
     grid-row: 1;
 }
@@ -232,27 +234,27 @@ input{
 
 
 .plan{
-    background-color:#043d44;
+    background-color: #272728;
     width:100%;
     border-radius:5px;
     border-style:none none solid none;
-    border-color:#00ff00;
+    border-color:#00ff0033;
     border-width:1px;
     padding-top:1rem;
 }
 .tierWrapper{
     display:flex;
+    flex-wrap: wrap;
 }
 .tier{
     flex:1;
     width:25%;
     border-style:solid;
-    border-color:#00ff00;
+    border-color:#00ff0022;
     margin:1%;
     border-radius:5px;
-    background-color:#06565f;
+    background-color: #343437;
     padding-top:0px;
-    box-shadow: 5px 5px 5px 0.01px #1eaeda;
 }
 .tier .bannerBtn{
     width:90%;
@@ -273,6 +275,7 @@ input{
     box-shadow: 0px 0px 20px 3px #dfff66;
 }
 
+/*
 #searchTerm{
     background-color:#006400;
     color:#00d7ff;
@@ -292,11 +295,7 @@ input{
 #searchTerm:active{
     border-color:  rgb(0,0,0) rgb(175,175,175) rgb(175,175,175) rgb(0,0,0);
 }
-
-#searchButton{
-    width:5%;
-    float:none;
-}
+*/
 
 #addButton{
     width:20%;

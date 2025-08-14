@@ -14,34 +14,65 @@
     </head>
     <body>
         <% if(curDomain.includes("kestron.software")){ %>
-            <div id="moving">
+            <div id="moving" style="width:100%;margin:0.5rem;background-color:rgb(255,255,0);color:#000;text-align:center;height:3rem;font-size:2rem;">
                 This website is moving! Find us at <a href="<%= curDomain.replaceAll("kestron.software","kestron.com") %>">kestron.com</a>!
             </div>
         <% } %>
         <%- header %>
-        <div class="content">
-            <img class="fr" src="stewbot.jpg">
-            Stewbot is a Discord bot designed to help keep servers fun and engaging while simultaneously providing moderators the tools to keep everything clean at the same time.
+        <h1 class="centered">Stewbot</h1>
+        <div class="content featureCard">
+            <img src="stewbot.jpg">
+            <div class="descriptionWrapper">
+                <div>
+                    <h2>Helpful & Fun</h2>
+                    <p>Stewbot is a Discord bot designed to help keep servers fun and engaging while simultaneously providing moderators the tools to keep everything clean at the same time.</p>
+                </div>
+            </div>
         </div>
-        <div class="content">
-            <img class="fl" src="robocoins.jpg">
-            Stewbot is completely and totally free and private. Stewbot is a passion project, brought to you out of our desire for the ultimate Discord bot. There are no costs whatsoever, no advertisements, and everything is fully private. If you're looking for a trustworthy yet free bot with features other bots would lock off behind a paywall, you've found that bot.
+        <div class="content featureCard">
+            <img src="robocoins.jpg">
+            <div class="descriptionWrapper">
+                <div>
+                    <h2>Free & Private</h2>
+                    <p>Stewbot is completely and totally free and private. Stewbot is a passion project, brought to you out of our desire for the ultimate Discord bot. There are no costs whatsoever, no advertisements, and everything is fully private. If you're looking for a trustworthy yet free bot with features other bots would lock off behind a paywall, you've found that bot.</p>
+                </div>
+            </div>
         </div>
-        <div class="content" id="special">
-            <img class="fr" src="shakingHands.jpg">
-            Like the commands Stewbot gives you access to? Install him to your profile to use anywhere on all of Discord, even in DMs!
+        <div class="content featureCard" id="special">
+            <img src="shakingHands.jpg">
+            <div class="descriptionWrapper">
+                <div>
+                    <h2>Augment Yourself</h2>
+                    <p>Like the commands Stewbot gives you access to? Install him to your profile to use anywhere on all of Discord, even in DMs!</p>
+                </div>
+            </div>
         </div>
-        <div class="content">
-            <img class="fl" src="robosalute.jpg">
-            Stewbot is here to serve, specifically designed to give your moderators all of the control. Everything that can be left to moderator decision, is, and everything that can be left to normal user decision, is.
+        <div class="content featureCard">
+            <img src="robosalute.jpg">
+            <div class="descriptionWrapper">
+                <div>
+                    <h2>For Users and Moderators</h2>
+                    <p>Stewbot is here to serve, specifically designed to give your moderators all of the control. Everything that can be left to moderator decision, is, and everything that can be left to normal user decision, is.</p>
+                </div>
+            </div>
         </div>
-        <div class="content">
-            <img class="fr" src="robomessage.jpg">
-            Stewbot is specially designed to provide lots of tools to keep servers fun and engaging. Ranging from conversation starters like Would-you-Rather questions, to AI Images, to memes, to starboard, and much much more! Stewbot has you covered.
+        <div class="content featureCard">
+            <img src="robomessage.jpg">
+            <div class="descriptionWrapper">
+                <div>
+                    <h2>He does it all!</h2>
+                    <p>Stewbot is specially designed to provide lots of tools to keep servers fun and engaging. Ranging from conversation starters like Would-you-Rather questions, to AI Images, to memes, to starboard, and much much more! Stewbot has you covered.</p>
+                </div>
+            </div>
         </div>
-        <div class="content">
-            <img class="fl" src="robomod.jpg">
-            Moderating some Discord servers can be challenging. Stewbot has your back! Providing lots of tools to automate moderation, he's ready to serve. Capable of not just removing messages with swear words in them, but also censoring them so the conversation isn't interrupted. He also has lots of other tools such as Sticky Roles, Advanced Logging, Auto Join Messages, Server Messages, Message Moving, and so much more!
+        <div class="content featureCard">
+            <img src="robomod.jpg">
+            <div class="descriptionWrapper">
+                <div>
+                    <h2>Dictatorship Friendly</h2>
+                    <p>Moderating some Discord servers can be challenging. Stewbot has your back! Providing lots of tools to automate moderation, he's ready to serve. Capable of not just removing messages with swear words in them, but also censoring them so the conversation isn't interrupted. He also has lots of other tools such as Sticky Roles, Advanced Logging, Auto Join Messages, Server Messages, Message Moving, and so much more!</p>
+                </div>
+            </div>
         </div>
         <div class="tierWrapper">
             <div class="tier">
