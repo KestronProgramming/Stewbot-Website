@@ -6,7 +6,12 @@ const ejs = require("ejs");
 const site = express();
 const NodeCache = require("node-cache");
 const vm = require('node:vm');
+const helmet = require('helmet');
+const compression = require('compression')
 
+// @ts-ignore
+site.use(helmet({ contentSecurityPolicy: false }));
+site.use(compression())
 site.use(express.static(path.join(__dirname, "./static")));
 site.use(favicon(path.join(__dirname, "./static/stewbot.jpg")));
 
