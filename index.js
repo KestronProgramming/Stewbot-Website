@@ -89,7 +89,7 @@ site.get('/', (req, res) => {
 });
 
 site.get('/addIt', (req, res) => {
-    res.redirect("https://discord.com/api/oauth2/authorize?client_id=966167746243076136&permissions=8&scope=applications.commands%20bot");
+    res.redirect("https://discord.com/api/oauth2/authorize?client_id=966167746243076136");
 });
 
 site.get(`*`, (req, res) => {
