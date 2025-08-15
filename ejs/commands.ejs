@@ -77,7 +77,7 @@
                     <option value="not">Not</option>
                 </select><br>
                 <!-- TODO: pull these categories from the ./commands/modules/Categories.js file of stewbot source -->
-                Categories: <% ["General", "Bot", "Information", "Entertainment", "Configuration", "Administration", "Safety", "Context_Menu", "Server_Only","Module"].forEach(a=>{ %>
+                Categories: <% categories.forEach(a=>{ %>
                     <br><input type="checkbox" name="<%= a %>" class="categoriesCheckboxes" checked="true" onchange="updateCommandList()"> <%= a %>
                 <% }); %>
             </ul>
@@ -87,8 +87,20 @@
         <div hidden="true" id="helpCommandsDump"><%= JSON.stringify(helpCommands) %></div>
         <script>
             var helpCommands=JSON.parse(document.getElementById("helpCommandsDump").textContent);
-            var colorImportanceOrder=["Module","Context_Menu","Safety","Bot","Administration","Configuration","Entertainment","Information","General","Server_Only"];
-            var colors=["grey","grey","red","darkCyan","red","blue","darkGreen","brown","brown","brown"];
+            let colors = {
+                // First one in list is highest priority
+                "Module": "grey",
+                "Context_Menu": "grey",
+                "Safety": "red",
+                "Bot": "darkCyan",
+                "Administration": "red",
+                "Configuration": "blue",
+                "Entertainment": "darkGreen",
+                "Information": "brown",
+                "General": "brown",
+                "Server_Only": "brown"
+            };
+            const catImportance = Object.keys(colors)
             function updateCommandList(){
                 var searchTerm=document.getElementById("searchTerm").value;
                 var mode=document.getElementById("filterMode").value;
@@ -130,14 +142,11 @@
                 });
                 var divPrintOut=``;
                 for(var i=0;i<newCommands.length;i++){
-                    var highestPriorityFound=148;
-                    for(var j=0;j<newCommands[i].helpCategories.length;j++){
-                        if(colorImportanceOrder.indexOf(newCommands[i].helpCategories[j])<highestPriorityFound){
-                            highestPriorityFound=colorImportanceOrder.indexOf(newCommands[i].helpCategories[j]);
-                        }
-                    }
+                    let highestPriorityCat = newCommands[i].helpCategories.reduce((a, b) => 
+                        catImportance[a] > catImportance[b] ? a : b)
+
                     divPrintOut+=`
-                        <div class="command ${colors[highestPriorityFound]}">
+                        <div class="command ${colors[highestPriorityCat] || "grey"}">
                             <h6>${newCommands[i].helpCategories.join(", ")}</h6>
                             <h2>${newCommands[i].name}</h2>
                             <h5>${newCommands[i].shortDesc}</h5>

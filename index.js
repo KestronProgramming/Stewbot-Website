@@ -5,6 +5,7 @@ const fs = require("fs");
 const ejs = require("ejs");
 const site = express();
 const NodeCache = require("node-cache");
+const vm = require('node:vm');
 
 site.use(express.static(path.join(__dirname, "./static")));
 site.use(favicon(path.join(__dirname, "./static/stewbot.jpg")));
@@ -36,6 +37,21 @@ fs.readdirSync("./ejs").forEach(async page => {
             }
             // @ts-ignore
             ejsGlobals.helpCommands = cache.get("helpCommands");
+
+            if (!cache.has("categories")) {
+                const re = await fetch(`https://raw.githubusercontent.com/KestronProgramming/Stewbot/main/commands/modules/Categories.js`)
+                const commandsFile = await re.text();
+
+                // I'd rather not use eval, so we'll execute in a VM.
+                const sandbox = { module: { exports: {} }, exports: {}, };
+                vm.createContext(sandbox);
+                vm.runInContext(commandsFile, sandbox);
+                let Categories = Object.values(sandbox.module.exports); // Get as array
+
+                cache.set("categories", Categories)
+            }
+            // @ts-ignore
+            ejsGlobals.categories = cache.get("categories");
         }
 
         if (page === 'source.ejs') {
