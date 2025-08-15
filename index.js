@@ -4,35 +4,50 @@ const path = require("path");
 const fs = require("fs");
 const ejs = require("ejs");
 const site = express();
+const NodeCache = require("node-cache");
 
 site.use(express.static(path.join(__dirname, "./static")));
 site.use(favicon(path.join(__dirname, "./static/stewbot.jpg")));
 
+const cache = new NodeCache({ stdTTL: 60 * 20 });
+const ejsVars = {};
+
 // Load ejs partials into ejsGlobals
-const ejsPartials = {};
 fs.readdirSync("./partials").forEach(async partial => {
     const partialLoc = `./partials/${partial}`;
     const partialName = partial.split(".")[0];
     const content = await fs.promises.readFile(partialLoc);
-    ejsPartials[partialName] = content;
+    ejsVars[partialName] = content;
 });
 
 fs.readdirSync("./ejs").forEach(async page => {
     site.get(`/${page.split(".")[0]}`, async (req, res) => {
         let ejsGlobals = {
-            ...ejsPartials,
+            ...ejsVars,
             "curDomain": `${req.protocol}://${req.get('host')}${req.originalUrl}`
         };
+
+        // Get help commands when needed
         if (page === 'pricing.ejs' || page === 'commands.ejs') {
-            await fetch(`https://raw.githubusercontent.com/KestronProgramming/Stewbot/refs/heads/main/data/helpPages.json`).then(d => d.text()).then(d => {
-                ejsGlobals.helpCommands = JSON.parse(d);
-            });
+            if (!cache.has("helpCommands")) {
+                const re = await fetch(`https://raw.githubusercontent.com/KestronProgramming/Stewbot/refs/heads/main/data/helpPages.json`)
+                const commands = await re.json();
+                cache.set("helpCommands", commands)
+            }
+            // @ts-ignore
+            ejsGlobals.helpCommands = cache.get("helpCommands");
         }
+
         if (page === 'source.ejs') {
-            await fetch(`https://raw.githubusercontent.com/KestronProgramming/Stewbot/main/index.js`).then(d => d.text()).then(d => {
-                ejsGlobals.stewbotSource = d;
-            });
+            if (!cache.has("index.js")) {
+                const re = await fetch(`https://raw.githubusercontent.com/KestronProgramming/Stewbot/main/index.js`)
+                const code = await re.text();
+                cache.set("index.js", code)
+            }
+            // @ts-ignore
+            ejsGlobals.stewbotSource = cache.get("index.js");
         }
+
         ejs.renderFile(`./ejs/${page}`, ejsGlobals, {}, function (err, str) {
             if (err) {
                 res.send(err);
@@ -45,7 +60,7 @@ fs.readdirSync("./ejs").forEach(async page => {
 
 site.get('/', (req, res) => {
     let ejsGlobals = {
-        ...ejsPartials,
+        ...ejsVars,
         "curDomain": `${req.protocol}://${req.get('host')}${req.originalUrl}`
     };
     ejs.renderFile(`./ejs/index.ejs`, ejsGlobals, {}, function (err, str) {
