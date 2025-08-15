@@ -3,36 +3,27 @@ const favicon=require("express-favicon");
 const path=require("path");
 const fs=require("fs");
 const ejs=require("ejs");
-const site=new express();
+const site=express();
 site.listen(process.env?.PORT || 80,()=>{
     console.log("Site online");
 });
 site.use(express.static(path.join(__dirname,"./static")));
 site.use(favicon(path.join(__dirname,"./static/stewbot.jpg")));
 
+// Load ejs partials into ejsGlobals
+const ejsPartials = { }
+fs.readdirSync("./partials").forEach(async partial => {
+    const partialLoc = `./partials/${partial}`;
+    const partialName = partial.split(".")[0];
+    const content = await fs.promises.readFile(partialLoc);
+    ejsPartials[partialName] = content;
+})
+
 fs.readdirSync("./ejs").forEach(async page=>{
     site.get(`/${page.split(".")[0]}`,async (req,res)=>{
-        var ejsGlobals={
-            "header":`<div id="banner-wrapper">
-                    <div id="banner">
-                        <a href="/"><img src="stewbot.jpg" id="stewIcon"><img src="banner.png" id="stewBanner"></a><br>
-                        <span class="green"><b class="cyan">S</b>teward <b class="cyan">T</b>o <b class="cyan">E</b>xpedite <b class="cyan">W</b>ork</span><br><br>
-                        <nav class="bannerNav">
-                        <ul style="list-style-type:none;padding:0">
-                          <li><a class="bannerBtn" href="features">Features</a></li>
-                          <li><a class="bannerBtn" href="commands">Commands</a></li>
-                          <li><a href="pricing" class="bannerBtn">Pricing</a></li>
-                          <li><a href="add" class="bannerBtn">Install Stewbot</a></li>
-                          <li><a class="bannerBtn" href="/source">Source Code</a></li>
-                          <li><a href="/donate" class="bannerBtn">Donate</a></li>
-                        </ul>
-                        </nav>
-                    </div>
-                    </div>
-                    <br>`,
-            "footer":`<footer>Developed by <a href="https://github.com/Kestron06">Kestron</a> and <a href="https://github.com/Reginald-Gillespie">WKoA</a>. Find Stewbot in the <a href="https://discord.com/application-directory/966167746243076136
-">App Directory</a>. Join our <a href="https://discord.gg/k3yVkrrvez">Discord Support Server here</a>. <a href="/tos">Terms of Service</a>/<a href="/privacy">Privacy Policy</a></footer>`,
-	    "curDomain":`${req.protocol}://${req.get('host')}${req.originalUrl}`
+        let ejsGlobals={
+            ...ejsPartials,
+	        "curDomain":`${req.protocol}://${req.get('host')}${req.originalUrl}`
         };
         if(page==='pricing.ejs'||page==='commands.ejs'){
             await fetch(`https://raw.githubusercontent.com/KestronProgramming/Stewbot/refs/heads/main/data/helpPages.json`).then(d=>d.text()).then(d=>{
@@ -54,27 +45,9 @@ fs.readdirSync("./ejs").forEach(async page=>{
     });
 });
 site.get('/',(req,res)=>{
-    var ejsGlobals={
-        "header":`<div id="banner-wrapper">
-                    <div id="banner">
-                        <a href="/"><img src="stewbot.jpg" id="stewIcon"><img src="banner.png" id="stewBanner"></a><br>
-                        <span class="green"><b class="cyan">S</b>teward <b class="cyan">T</b>o <b class="cyan">E</b>xpedite <b class="cyan">W</b>ork</span><br><br>
-                        <nav class="bannerNav">
-                        <ul style="list-style-type:none;padding:0">
-                          <li><a class="bannerBtn" href="features">Features</a></li>
-                          <li><a class="bannerBtn" href="commands">Commands</a></li>
-                          <li><a href="pricing" class="bannerBtn">Pricing</a></li>
-                          <li><a href="add" class="bannerBtn">Install Stewbot</a></li>
-                          <li><a class="bannerBtn" href="/source">Source Code</a></li>
-                          <li><a href="/donate" class="bannerBtn">Donate</a></li>
-                        </ul>
-                        </nav>
-                    </div>
-                    </div>
-                    <br>`,
-            "footer":`<footer>Developed by <a href="https://github.com/Kestron06">Kestron</a> and <a href="https://github.com/Reginald-Gillespie">WKoA</a>. Find Stewbot in the <a href="https://discord.com/application-directory/966167746243076136
-">App Directory</a>. Join our <a href="https://discord.gg/k3yVkrrvez">Discord Support Server here</a>. <a href="/tos">Terms of Service</a>/<a href="/privacy">Privacy Policy</a></footer>`,
-	    "curDomain":`${req.protocol}://${req.get('host')}${req.originalUrl}`
+    let ejsGlobals={
+        ...ejsPartials,
+        "curDomain":`${req.protocol}://${req.get('host')}${req.originalUrl}`
     };
     ejs.renderFile(`./ejs/index.ejs`, ejsGlobals, {}, function(err, str) {
         if (err) {
