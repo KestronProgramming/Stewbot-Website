@@ -3,13 +3,12 @@
     <head>
         <title>Stewbot</title>
         <link href="global.css" media="only screen and (min-width: 480px)" rel="stylesheet"></link>
-        <link href="index.css" media="only screen and (min-width: 480px)" rel="stylesheet"></link>
         <link rel="stylesheet" media="only screen and (max-width: 480px)" href="mobile.css"> 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="Stewbot" property="og:title" />
         <meta content="Stewbot, the bot designed to keep servers fun and engaging while also providing moderators the tools to keep things clean and safe." property="og:description" />
-        <meta content="https://stewbot.kestron.software" property="og:url" />
-        <meta content="https://stewbot.kestron.software/stewbot.jpg" property="og:image" />
+        <meta content="https://stewbot.kestron.com" property="og:url" />
+        <meta content="https://stewbot.kestron.com/stewbot.jpg" property="og:image" />
         <meta content="#006400" data-react-helmet="true" name="theme-color" />
     </head>
     <body>
@@ -75,33 +74,30 @@
             </div>
         </div>
         <div class="tierWrapper">
-            <div class="tier">
-                <br><br>
-                View the bot's features<br><br>
-                <a class="bannerBtn" href="features">Features</a>
+            <div class="tier quickLink">
+                <p>View the bot's features</p>
+                <a class="bannerBtn" href="features">Features →</a>
             </div>
-            <div class="tier">
-                <br><br>
-                View the bot's commands<br><br>
-                <a class="bannerBtn" href="commands">Commands</a>
+            <div class="tier quickLink">
+                <p>View the bot's commands</p>
+                <a class="bannerBtn" href="commands">Commands →</a>
             </div>
-            <div class="tier">
-                <br><br>
-                View the bot's pricing<br><br>
-                <a class="bannerBtn" href="pricing">Pricing</a>
+            <div class="tier quickLink">
+                <p>View the bot's pricing</p>
+                <a class="bannerBtn" href="pricing">Pricing →</a>
             </div>
-            <div class="tier">
-                <br><br>
-                Add the bot to your server<br><br>
-                <a class="bannerBtn" href="add">Add to Server</a>
+            <div class="tier quickLink">
+                <p>Add the bot to your server</p>
+                <a class="bannerBtn" href="add">Add to Server →</a>
             </div>
-            <div class="tier">
-                <br><br>
-                View the bot's source code<br><br>
-                <a class="bannerBtn" href="source">Source Code</a>
+            <div class="tier quickLink">
+                <p>View the bot's source code</p>
+                <a class="bannerBtn" href="source">Source Code →</a>
             </div>
         </div>
-        <br>
+        <div class="buttonWrapper">
+            <a href="add"><input value="Install Stewbot →" id="addButton" type="submit"></a>
+        </div>
         <%- footer %>
     </body>
 </html>

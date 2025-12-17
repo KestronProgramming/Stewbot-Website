@@ -8,8 +8,8 @@
 
         <meta content="Pricing for Stewbot" property="og:title" />
         <meta content="List of the free pricing options for Stewbot, the bot designed to keep servers fun and engaging while also providing moderators the tools to keep things clean and safe." property="og:description" />
-        <meta content="https://stewbot.kestron.software" property="og:url" />
-        <meta content="https://stewbot.kestron.software/stewbot.jpg" property="og:image" />
+        <meta content="https://stewbot.kestron.com" property="og:url" />
+        <meta content="https://stewbot.kestron.com/stewbot.jpg" property="og:image" />
         <meta content="#006400" data-react-helmet="true" name="theme-color" />
     </head>
     <body>
@@ -59,6 +59,9 @@
             </div>
         </div>
         <h1 class="centered" id="dontWait"><i>It's all free</i>! What are you waiting for?</h1>
+        <div class="buttonWrapper">
+            <a href="add"><input value="Install Stewbot Now →" id="addButton" type="submit"></a>
+        </div>
         <div hidden="true" id="helpCommands"><%= JSON.stringify(helpCommands) %></div>
         <script>
             var helpCommands=JSON.parse(document.getElementById("helpCommands").textContent);

@@ -7,8 +7,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="Stewbot Commands List" property="og:title" />
         <meta content="The full command list for Stewbot, the bot designed to keep servers fun and engaging while also providing moderators the tools to keep things clean and safe." property="og:description" />
-        <meta content="https://stewbot.kestron.software" property="og:url" />
-        <meta content="https://stewbot.kestron.software/stewbot.jpg" property="og:image" />
+        <meta content="https://stewbot.kestron.com" property="og:url" />
+        <meta content="https://stewbot.kestron.com/stewbot.jpg" property="og:image" />
         <meta content="#006400" data-react-helmet="true" name="theme-color" />
         <style>
             /*select{
@@ -66,21 +66,29 @@
         <h1 class="centered" id="commands">Commands</h1>
         <div class="content">
             <h3>Filters</h3>
-            <ul>
-                <label for="">Search term:</label>
-                <input placeholder="Search term..." onChange="updateCommandList()" class="input" id="searchTerm">
-                <input type="button" value="Search" onclick="updateCommandList()" class="button" id="searchButton"><br>
-                Filter Mode: 
-                <select name="filterMode" onchange="updateCommandList()" class="select" id="filterMode">
-                    <option value="or">Or</option>
-                    <option value="and">And</option>
-                    <option value="not">Not</option>
-                </select><br>
+            <div class="searchWrapper">
+                <label for="searchTerm">Search term:</label>
+                <div class="searchInputGroup">
+                    <input placeholder="Search term..." onChange="updateCommandList()" class="input" id="searchTerm">
+                    <input type="button" value="Search" onclick="updateCommandList()" class="button" id="searchButton">
+                </div>
+            </div>
+            <div class="filterOptions">
+                <label>Filter Mode: 
+                    <select name="filterMode" onchange="updateCommandList()" class="select" id="filterMode">
+                        <option value="or">Or</option>
+                        <option value="and">And</option>
+                        <option value="not">Not</option>
+                    </select>
+                </label>
+            </div>
+            <div class="categoryFilters">
                 <!-- TODO: pull these categories from the ./commands/modules/Categories.js file of stewbot source -->
-                Categories: <% categories.forEach(a=>{ %>
-                    <br><input type="checkbox" name="<%= a %>" class="categoriesCheckboxes" checked="true" onchange="updateCommandList()"> <%= a %>
+                <p>Categories:</p>
+                <% categories.forEach(a=>{ %>
+                    <label class="categoryLabel"><input type="checkbox" name="<%= a %>" class="categoriesCheckboxes" checked="true" onchange="updateCommandList()"> <%= a %></label>
                 <% }); %>
-            </ul>
+            </div>
         </div>
         <div id="commandsDiv">
         </div>

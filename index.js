@@ -98,7 +98,17 @@ site.get('/addIt', (req, res) => {
 });
 
 site.get(`*`, (req, res) => {
-    res.status(404).send(fs.readFileSync(`./404.html`, 'utf-8'));
+    let ejsGlobals = {
+        ...ejsVars,
+        "curDomain": `${req.protocol}://${req.get('host')}${req.originalUrl}`
+    };
+    ejs.renderFile(`./ejs/404.ejs`, ejsGlobals, {}, function (err, str) {
+        if (err) {
+            res.send(err);
+            return;
+        }
+        res.status(404).send(str);
+    });
 });
 
 site.listen(process.env?.PORT || 80, () => {
