@@ -323,7 +323,7 @@ input{
     margin-bottom: 0.5rem;
 }
 .tier li::before {
-    content: "→";
+    content: "»";
     position: absolute;
     left: 0;
     color: #00d764;
@@ -375,7 +375,7 @@ input{
 }
 
 #addButton, #donateButton {
-    width: 280px;
+    /* width: 280px; */
     height: 4.5rem;
     padding: 0 1.25rem;
     transition: 0.3s;

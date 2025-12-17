@@ -321,7 +321,7 @@ input{
     text-align: left;
 }
 .tier li::before {
-    content: "→";
+    content: "»";
     position: absolute;
     left: 0;
     color: #00d764;
@@ -379,7 +379,7 @@ input{
 }
 
 #addButton{
-    width: 220px;
+    /* width: 220px; */
     height: 3.5rem;
     transition: 0.3s;
     background-color: #1c5735;
