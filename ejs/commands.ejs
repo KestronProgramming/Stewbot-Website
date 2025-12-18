@@ -7,11 +7,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="Stewbot Commands List" property="og:title" />
         <meta content="The full command list for Stewbot, the bot designed to keep servers fun and engaging while also providing moderators the tools to keep things clean and safe." property="og:description" />
-        <meta content="https://stewbot.kestron.software" property="og:url" />
-        <meta content="https://stewbot.kestron.software/stewbot.jpg" property="og:image" />
+        <meta content="https://stewbot.kestron.com" property="og:url" />
+        <meta content="https://stewbot.kestron.com/stewbot.jpg" property="og:image" />
         <meta content="#006400" data-react-helmet="true" name="theme-color" />
         <style>
-            select{
+            /*select{
                 box-sizing:border-box;
                 background-color:#006400;
                 color:#00d7ff;
@@ -31,8 +31,9 @@
             select:active{
                 border-color:  rgb(0,0,0) rgb(175,175,175) rgb(175,175,175) rgb(0,0,0);
             }
+            */
 
-            option{
+            /*option{
                 box-sizing:border-box;
                 background-color:#006400;
                 color:#00d7ff;
@@ -51,11 +52,8 @@
             }
             option:active{
                 border-color:  rgb(0,0,0) rgb(175,175,175) rgb(175,175,175) rgb(0,0,0);
-            }
+            }*/
 
-            input[type="checkbox"]{
-                accent-color:#00ff00;
-            }
         </style>
     </head>
     <body>
@@ -68,27 +66,49 @@
         <h1 class="centered" id="commands">Commands</h1>
         <div class="content">
             <h3>Filters</h3>
-            <ul>
-                Search term: <input placeholder="Search term..." onChange="updateCommandList()" id="searchTerm"><input type="button" value="Search" onclick="updateCommandList()" class="bannerBtn" id="searchButton"><br>
-                Filter Mode: 
-                <select name="filterMode" onchange="updateCommandList()" id="filterMode">
-                    <option value="or">Or</option>
-                    <option value="and">And</option>
-                    <option value="not">Not</option>
-                </select><br>
+            <div class="searchWrapper">
+                <label for="searchTerm">Search term:</label>
+                <div class="searchInputGroup">
+                    <input placeholder="Search term..." onChange="updateCommandList()" class="input" id="searchTerm">
+                    <input type="button" value="Search" onclick="updateCommandList()" class="button" id="searchButton">
+                </div>
+            </div>
+            <div class="filterOptions">
+                <label>Filter Mode: 
+                    <select name="filterMode" onchange="updateCommandList()" class="select" id="filterMode">
+                        <option value="or">Or</option>
+                        <option value="and">And</option>
+                        <option value="not">Not</option>
+                    </select>
+                </label>
+            </div>
+            <div class="categoryFilters">
                 <!-- TODO: pull these categories from the ./commands/modules/Categories.js file of stewbot source -->
-                Categories: <% ["General", "Bot", "Information", "Entertainment", "Configuration", "Administration", "Safety", "Context_Menu", "Server_Only","Module"].forEach(a=>{ %>
-                    <br><input type="checkbox" name="<%= a %>" class="categoriesCheckboxes" checked="true" onchange="updateCommandList()"> <%= a %>
+                <p>Categories:</p>
+                <% categories.forEach(a=>{ %>
+                    <label class="categoryLabel"><input type="checkbox" name="<%= a %>" class="categoriesCheckboxes" checked="true" onchange="updateCommandList()"> <%= a %></label>
                 <% }); %>
-            </ul>
+            </div>
         </div>
         <div id="commandsDiv">
         </div>
         <div hidden="true" id="helpCommandsDump"><%= JSON.stringify(helpCommands) %></div>
         <script>
             var helpCommands=JSON.parse(document.getElementById("helpCommandsDump").textContent);
-            var colorImportanceOrder=["Module","Context_Menu","Safety","Bot","Administration","Configuration","Entertainment","Information","General","Server_Only"];
-            var colors=["grey","grey","red","darkCyan","red","blue","darkGreen","brown","brown","brown"];
+            let colors = {
+                // First one in list is highest priority
+                "Module": "grey",
+                "Context_Menu": "grey",
+                "Safety": "red",
+                "Bot": "darkCyan",
+                "Administration": "red",
+                "Configuration": "blue",
+                "Entertainment": "darkGreen",
+                "Information": "brown",
+                "General": "brown",
+                "Server_Only": "brown"
+            };
+            const catImportance = Object.keys(colors)
             function updateCommandList(){
                 var searchTerm=document.getElementById("searchTerm").value;
                 var mode=document.getElementById("filterMode").value;
@@ -130,14 +150,11 @@
                 });
                 var divPrintOut=``;
                 for(var i=0;i<newCommands.length;i++){
-                    var highestPriorityFound=148;
-                    for(var j=0;j<newCommands[i].helpCategories.length;j++){
-                        if(colorImportanceOrder.indexOf(newCommands[i].helpCategories[j])<highestPriorityFound){
-                            highestPriorityFound=colorImportanceOrder.indexOf(newCommands[i].helpCategories[j]);
-                        }
-                    }
+                    let highestPriorityCat = newCommands[i].helpCategories.reduce((a, b) => 
+                        catImportance[a] > catImportance[b] ? a : b)
+
                     divPrintOut+=`
-                        <div class="command ${colors[highestPriorityFound]}">
+                        <div class="command ${colors[highestPriorityCat] || "grey"}">
                             <h6>${newCommands[i].helpCategories.join(", ")}</h6>
                             <h2>${newCommands[i].name}</h2>
                             <h5>${newCommands[i].shortDesc}</h5>

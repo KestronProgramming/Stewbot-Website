@@ -1,0 +1,17 @@
+
+
+.button, .input, .select {
+    font-size: 1rem;
+    background-color: #292932;
+    color: #efefff;
+    padding: .5em;
+    border: solid 1px #afafef55;
+    border-radius: .3rem;
+    margin-bottom: .5rem;
+}
+
+/* legacy or something */
+input[type="checkbox"]{
+    accent-color:#00ff00;
+}
+
