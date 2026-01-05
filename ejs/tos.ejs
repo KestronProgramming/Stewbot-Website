@@ -8,8 +8,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="Stewbot" property="og:title" />
         <meta content="Terms of Service for Stewbot" property="og:description" />
-        <meta content="https://stewbot.kestron.com/tos" property="og:url" />
-        <meta content="https://stewbot.kestron.com/stewbot.jpg" property="og:image" />
+        <meta content="https://stewared.com/tos" property="og:url" />
+        <meta content="https://stewared.com/stewbot.jpg" property="og:image" />
         <meta content="#006400" data-react-helmet="true" name="theme-color" />
         <style>
             .content{
@@ -18,9 +18,9 @@
         </style>
     </head>
     <body>
-        <% if(curDomain.includes("kestron.software")){ %>
+        <% if(!curDomain.includes("stewared.com")){ %>
             <div id="moving" style="width:100%;margin:0.5rem;background-color:rgb(255,255,0);color:#000;text-align:center;height:3rem;font-size:2rem;">
-                This website is moving! Find us at <a href="<%= curDomain.replaceAll("kestron.software","kestron.com") %>">kestron.com</a>!
+                This website is moving! Find us at <a href="https://bot.stewared.com/">Stewared.com</a>!
             </div>
         <% } %>
         <%- header %>
@@ -36,7 +36,7 @@
             &emsp;The representatives of the service will not be held liable for anything that happens through misuse or unintentional effects of the service. The developer can be held responsible to fix the service to remove any exploits, vulnerabilities, unsafe, or unintentional content, but cannot be held liable for any result of the service.<br>
             &emsp;The service is run and managed within the United States of America and are subject to the governing laws and authorities of the United States.<br><br>
             &emsp;The service's privacy policy can be viewed <a href="/privacy">here</a>.
-            &emsp;The developer of the service can be contacted for any questions, concerns, or other communications at <a href="mailto:kestron@kestron.com">kestron@kestron.com</a>.
+            &emsp;The developer of the service can be contacted for any questions, concerns, or other communications at <a href="mailto:feedback@stewared.com">feedback@stewared.com</a>.
         </div>
         <%- footer %>
     </body>

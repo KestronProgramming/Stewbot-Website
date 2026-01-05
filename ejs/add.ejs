@@ -8,14 +8,14 @@
 
         <meta content="Add Stewbot to your server" property="og:title" />
         <meta content="Add Stewbot, the bot designed to keep servers fun and engaging while also providing moderators the tools to keep things clean and safe, to your server." property="og:description" />
-        <meta content="https://stewbot.kestron.com" property="og:url" />
-        <meta content="https://stewbot.kestron.com/stewbot.jpg" property="og:image" />
+        <meta content="https://stewared.com" property="og:url" />
+        <meta content="https://stewared.com/stewbot.jpg" property="og:image" />
         <meta content="#006400" data-react-helmet="true" name="theme-color" />
     </head>
     <body>
-        <% if(curDomain.includes("kestron.software")){ %>
+        <% if(!curDomain.includes("stewared.com")){ %>
             <div id="moving" style="width:100%;margin:0.5rem;background-color:rgb(255,255,0);color:#000;text-align:center;height:3rem;font-size:2rem;">
-                This website is moving! Find us at <a href="<%= curDomain.replaceAll("kestron.software","kestron.com") %>">kestron.com</a>!
+                This website is moving! Find us at <a href="https://bot.stewared.com/">Stewared.com</a>!
             </div>
         <% } %>
         <%- header %>

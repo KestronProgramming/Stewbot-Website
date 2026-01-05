@@ -36,7 +36,7 @@ fs.readdirSync("./ejs").forEach(async page => {
         // Get help commands when needed
         if (page === 'pricing.ejs' || page === 'commands.ejs') {
             if (!cache.has("helpCommands")) {
-                const re = await fetch(`https://raw.githubusercontent.com/KestronProgramming/Stewbot/refs/heads/main/data/helpPages.json`)
+                const re = await fetch(`https://raw.githubusercontent.com/Stewared/Stewbot/refs/heads/main/data/helpPages.json`)
                 const commands = await re.json();
                 cache.set("helpCommands", commands)
             }
@@ -44,7 +44,7 @@ fs.readdirSync("./ejs").forEach(async page => {
             ejsGlobals.helpCommands = cache.get("helpCommands");
 
             if (!cache.has("categories")) {
-                const re = await fetch(`https://raw.githubusercontent.com/KestronProgramming/Stewbot/main/commands/modules/Categories.js`)
+                const re = await fetch(`https://raw.githubusercontent.com/Stewared/Stewbot/main/commands/modules/Categories.js`)
                 const commandsFile = await re.text();
 
                 // I'd rather not use eval, so we'll execute in a VM.
@@ -61,7 +61,7 @@ fs.readdirSync("./ejs").forEach(async page => {
 
         if (page === 'source.ejs') {
             if (!cache.has("index.js")) {
-                const re = await fetch(`https://raw.githubusercontent.com/KestronProgramming/Stewbot/main/index.js`)
+                const re = await fetch(`https://raw.githubusercontent.com/Stewared/Stewbot/main/index.js`)
                 const code = await re.text();
                 cache.set("index.js", code)
             }
