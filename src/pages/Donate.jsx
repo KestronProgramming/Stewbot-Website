@@ -1,9 +1,11 @@
+import robocoinsImg from '/robocoins.jpg';
+
 export function Donate() {
   return (
     <>
       <h1 class="centered">Donate to Stewbot</h1>
       <div class="content featureCard" id="special">
-        <img src="/robocoins.jpg" alt="Support Our Mission" />
+        <img src={robocoinsImg} alt="Support Our Mission" />
         <div class="descriptionWrapper">
           <div>
             <h2>Support Our Mission</h2>

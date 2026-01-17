@@ -4,10 +4,10 @@ import { resolve } from 'path';
 
 const __dirname = import.meta.dirname || new URL('.', import.meta.url).pathname.slice(1);
 
-export default defineConfig({
+export default defineConfig(({ command }) => ({
   plugins: [preact()],
   root: '.',
-  base: '/Stewbot-Website/',
+  base: command === 'build' ? '/Stewbot-Website/' : '/',
   publicDir: 'public',
   build: {
     outDir: 'dist',
@@ -26,4 +26,4 @@ export default defineConfig({
     port: 8080,
     open: false
   }
-});
+}));

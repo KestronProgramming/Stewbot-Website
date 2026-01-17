@@ -1,10 +1,29 @@
+import shakingHandsImg from '/shakingHands.jpg';
+import robostopImg from '/robostop.jpg';
+import robophoneImg from '/robophone.jpg';
+import robosaluteImg from '/robosalute.jpg';
+import robostarImg from '/robostar.jpg';
+import robomoderatorImg from '/robomoderator.jpg';
+import roboabacusImg from '/roboabacus.jpg';
+import robotagImg from '/robotag.jpg';
+import robointermediaryImg from '/robointermediary.jpg';
+import robowelcomeImg from '/robowelcome.jpg';
+import robologImg from '/robolog.jpg';
+import robohoneyImg from '/robohoney.jpg';
+import robostickerImg from '/robosticker.jpg';
+import robodiceImg from '/robodice.jpg';
+import robopollImg from '/robopoll.jpg';
+import robobookImg from '/robobook.jpg';
+import stewbotImg from '/stewbot.jpg';
+import stewImg from '/stew.jpg';
+
 export function Features() {
   return (
     <>
       <h1 class="centered">Features</h1>
       <main class="featuresGrid">
         <div class="content featureCard" id="special">
-          <img src="/shakingHands.jpg" alt="Install to Your Profile" />
+          <img src={shakingHandsImg} alt="Install to Your Profile" />
           <div class="descriptionWrapper">
             <div>
               <h2>Install to Your Profile</h2>
@@ -13,7 +32,7 @@ export function Features() {
           </div>
         </div>
         <div class="content featureCard">
-          <img src="/robostop.jpg" alt="Prevent Hacking & Spam" />
+          <img src={robostopImg} alt="Prevent Hacking & Spam" />
           <div class="descriptionWrapper">
             <div>
               <h2>Prevent Hacking & Spam</h2>
@@ -22,7 +41,7 @@ export function Features() {
           </div>
         </div>
         <div class="content featureCard">
-          <img src="/robophone.jpg" alt="LEVEL UP!" />
+          <img src={robophoneImg} alt="LEVEL UP!" />
           <div class="descriptionWrapper">
             <div>
               <h2>LEVEL UP!</h2>
@@ -31,7 +50,7 @@ export function Features() {
           </div>
         </div>
         <div class="content featureCard">
-          <img src="/robosalute.jpg" alt="Configure & Customize Commands" />
+          <img src={robosaluteImg} alt="Configure & Customize Commands" />
           <div class="descriptionWrapper">
             <div>
               <h2>Configure & Customize Commands</h2>
@@ -40,7 +59,7 @@ export function Features() {
           </div>
         </div>
         <div class="content featureCard">
-          <img src="/robostop.jpg" alt="Censor Messages" />
+          <img src={robostopImg} alt="Censor Messages" />
           <div class="descriptionWrapper">
             <div>
               <h2>Censor Messages</h2>
@@ -49,7 +68,7 @@ export function Features() {
           </div>
         </div>
         <div class="content featureCard">
-          <img src="/robostar.jpg" alt="Emojiboards" />
+          <img src={robostarImg} alt="Emojiboards" />
           <div class="descriptionWrapper">
             <div>
               <h2>Emojiboards</h2>
@@ -58,7 +77,7 @@ export function Features() {
           </div>
         </div>
         <div class="content featureCard">
-          <img src="/robomoderator.jpg" alt="Easy Server Managment" />
+          <img src={robomoderatorImg} alt="Easy Server Managment" />
           <div class="descriptionWrapper">
             <div>
               <h2>Easy Server Managment</h2>
@@ -67,7 +86,7 @@ export function Features() {
           </div>
         </div>
         <div class="content featureCard">
-          <img src="/roboabacus.jpg" alt="Just Keep Counting" />
+          <img src={roboabacusImg} alt="Just Keep Counting" />
           <div class="descriptionWrapper">
             <div>
               <h2>Just Keep Counting</h2>
@@ -76,7 +95,7 @@ export function Features() {
           </div>
         </div>
         <div class="content featureCard">
-          <img src="/robotag.jpg" alt="Add Self-Assigned Roles" />
+          <img src={robotagImg} alt="Add Self-Assigned Roles" />
           <div class="descriptionWrapper">
             <div>
               <h2>Add Self-Assigned Roles</h2>
@@ -85,7 +104,7 @@ export function Features() {
           </div>
         </div>
         <div class="content featureCard">
-          <img src="/robointermediary.jpg" alt="File Tickets" />
+          <img src={robointermediaryImg} alt="File Tickets" />
           <div class="descriptionWrapper">
             <div>
               <h2>File Tickets</h2>
@@ -94,7 +113,7 @@ export function Features() {
           </div>
         </div>
         <div class="content featureCard">
-          <img src="/robowelcome.jpg" alt="Automatically Send Messages" />
+          <img src={robowelcomeImg} alt="Automatically Send Messages" />
           <div class="descriptionWrapper">
             <div>
               <h2>Automatically Send Messages</h2>
@@ -103,7 +122,7 @@ export function Features() {
           </div>
         </div>
         <div class="content featureCard">
-          <img src="/robolog.jpg" alt="Log Server Changes" />
+          <img src={robologImg} alt="Log Server Changes" />
           <div class="descriptionWrapper">
             <div>
               <h2>Log Server Changes</h2>
@@ -112,7 +131,7 @@ export function Features() {
           </div>
         </div>
         <div class="content featureCard">
-          <img src="/robohoney.jpg" alt="Add Persistent Roles" />
+          <img src={robohoneyImg} alt="Add Persistent Roles" />
           <div class="descriptionWrapper">
             <div>
               <h2>Add Persistent Roles</h2>
@@ -121,7 +140,7 @@ export function Features() {
           </div>
         </div>
         <div class="content featureCard">
-          <img src="/robosticker.jpg" alt="Automatically Apply Roles" />
+          <img src={robostickerImg} alt="Automatically Apply Roles" />
           <div class="descriptionWrapper">
             <div>
               <h2>Automatically Apply Roles</h2>
@@ -130,7 +149,7 @@ export function Features() {
           </div>
         </div>
         <div class="content featureCard">
-          <img src="/robophone.jpg" alt="Run Fun Activities" />
+          <img src={robophoneImg} alt="Run Fun Activities" />
           <div class="descriptionWrapper">
             <div>
               <h2>Run Fun Activities</h2>
@@ -139,7 +158,7 @@ export function Features() {
           </div>
         </div>
         <div class="content featureCard">
-          <img src="/robodice.jpg" alt="Generate Random Numbers" />
+          <img src={robodiceImg} alt="Generate Random Numbers" />
           <div class="descriptionWrapper">
             <div>
               <h2>Generate Random Numbers</h2>
@@ -148,7 +167,7 @@ export function Features() {
           </div>
         </div>
         <div class="content featureCard">
-          <img src="/robopoll.jpg" alt="Poll the Masses" />
+          <img src={robopollImg} alt="Poll the Masses" />
           <div class="descriptionWrapper">
             <div>
               <h2>Poll the Masses</h2>
@@ -157,7 +176,7 @@ export function Features() {
           </div>
         </div>
         <div class="content featureCard">
-          <img src="/robobook.jpg" alt="Define, Translate & Verse Lookup" />
+          <img src={robobookImg} alt="Define, Translate & Verse Lookup" />
           <div class="descriptionWrapper">
             <div>
               <h2>Define, Translate & Verse Lookup</h2>
@@ -166,7 +185,7 @@ export function Features() {
           </div>
         </div>
         <div class="content featureCard">
-          <img src="/stewbot.jpg" alt="Chat with Stewbot" />
+          <img src={stewbotImg} alt="Chat with Stewbot" />
           <div class="descriptionWrapper">
             <div>
               <h2>Chat with Stewbot</h2>
@@ -175,7 +194,7 @@ export function Features() {
           </div>
         </div>
         <div class="content featureCard">
-          <img src="/stew.jpg" alt="Mmmmmmmmmmmmmmmmmmmmmmmmmm!" />
+          <img src={stewImg} alt="Mmmmmmmmmmmmmmmmmmmmmmmmmm!" />
           <div class="descriptionWrapper">
             <div>
               <h2>Mmmmmmmmmmmmmmmmmmmmmmmmmm!</h2>

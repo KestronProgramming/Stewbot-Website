@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'preact/hooks';
+import rollVideo from '/roll.mp4';
 
 export function Source({ pageData = {} }) {
   const [stewbotSource, setStewbotSource] = useState(pageData.stewbotSource || '');
@@ -43,7 +44,7 @@ export function Source({ pageData = {} }) {
 
   function roll() {
     if (typeof document !== 'undefined') {
-      document.body.innerHTML = `<video width="100%" autoplay><source src="/roll.mp4" type="video/mp4"></video>${document.body.innerHTML}`;
+      document.body.innerHTML = `<video width="100%" autoplay><source src="${rollVideo}" type="video/mp4"></video>${document.body.innerHTML}`;
     }
   }
 

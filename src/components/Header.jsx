@@ -1,10 +1,13 @@
+import stewbotImg from '/stewbot.jpg';
+import bannerImg from '/banner.png';
+
 export function Header() {
   return (
     <>
       <div id="banner-wrapper">
         <div id="banner" class="banner-background">
           <div>
-            <a href="/"><img src="/stewbot.jpg" id="stewIcon" alt="Stewbot Icon" /><img src="/banner.png" id="stewBanner" alt="Stewbot Banner" /></a><br />
+            <a href="/"><img src={stewbotImg} id="stewIcon" alt="Stewbot Icon" /><img src={bannerImg} id="stewBanner" alt="Stewbot Banner" /></a><br />
             <span class="green"><b class="cyan">S</b>teward <b class="cyan">T</b>o <b class="cyan">E</b>xpedite <b class="cyan">W</b>ork</span><br /><br />
           </div>
         </div>

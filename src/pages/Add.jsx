@@ -1,9 +1,11 @@
+import stewbotImg from '/stewbot.jpg';
+
 export function Add() {
   return (
     <>
       <h1 class="centered">Add Stewbot to Server</h1>
       <div class="content featureCard" id="special">
-        <img src="/stewbot.jpg" alt="Stewbot" />
+        <img src={stewbotImg} alt="Stewbot" />
         <div class="descriptionWrapper">
           <div>
             <h2>Thanks for choosing Stewbot!</h2>

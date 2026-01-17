@@ -1,9 +1,16 @@
+import stewbotImg from '/stewbot.jpg';
+import robocoinsImg from '/robocoins.jpg';
+import shakingHandsImg from '/shakingHands.jpg';
+import robosaluteImg from '/robosalute.jpg';
+import robomessageImg from '/robomessage.jpg';
+import robomodImg from '/robomod.jpg';
+
 export function Home() {
   return (
     <>
       <h1 class="centered">Stewbot</h1>
       <div class="content featureCard">
-        <img src="/stewbot.jpg" alt="Stewbot" />
+        <img src={stewbotImg} alt="Stewbot" />
         <div class="descriptionWrapper">
           <div>
             <h2>Helpful & Fun</h2>
@@ -12,7 +19,7 @@ export function Home() {
         </div>
       </div>
       <div class="content featureCard">
-        <img src="/robocoins.jpg" alt="Free & Private" />
+        <img src={robocoinsImg} alt="Free & Private" />
         <div class="descriptionWrapper">
           <div>
             <h2>Free & Private</h2>
@@ -21,7 +28,7 @@ export function Home() {
         </div>
       </div>
       <div class="content featureCard" id="special">
-        <img src="/shakingHands.jpg" alt="Augment Yourself" />
+        <img src={shakingHandsImg} alt="Augment Yourself" />
         <div class="descriptionWrapper">
           <div>
             <h2>Augment Yourself</h2>
@@ -30,7 +37,7 @@ export function Home() {
         </div>
       </div>
       <div class="content featureCard">
-        <img src="/robosalute.jpg" alt="For Users and Moderators" />
+        <img src={robosaluteImg} alt="For Users and Moderators" />
         <div class="descriptionWrapper">
           <div>
             <h2>For Users and Moderators</h2>
@@ -39,7 +46,7 @@ export function Home() {
         </div>
       </div>
       <div class="content featureCard">
-        <img src="/robomessage.jpg" alt="He does it all!" />
+        <img src={robomessageImg} alt="He does it all!" />
         <div class="descriptionWrapper">
           <div>
             <h2>He does it all!</h2>
@@ -48,7 +55,7 @@ export function Home() {
         </div>
       </div>
       <div class="content featureCard">
-        <img src="/robomod.jpg" alt="Dictatorship Friendly" />
+        <img src={robomodImg} alt="Dictatorship Friendly" />
         <div class="descriptionWrapper">
           <div>
             <h2>Dictatorship Friendly</h2>
