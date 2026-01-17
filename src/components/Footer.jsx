@@ -1,0 +1,13 @@
+export function Footer() {
+  return (
+    <footer>
+      Developed by <a href="https://github.com/Kestron06">Kestron</a> and{' '}
+      <a href="https://github.com/Reginald-Gillespie">WKoA</a>. Find Stewbot in
+      the{' '}
+      <a href="https://discord.com/application-directory/966167746243076136">App Directory</a>.
+      {' '}Join our{' '}
+      <a href="https://discord.gg/k3yVkrrvez">Discord Support Server here</a>.{' '}
+      <a href="/tos">Terms of Service</a>/<a href="/privacy">Privacy Policy</a>
+    </footer>
+  );
+}

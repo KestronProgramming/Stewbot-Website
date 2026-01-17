@@ -1,0 +1,8 @@
+/* Main styles - Vite will bundle these */
+@import url('/global.css');
+
+/* Desktop styles */
+@import url('/global.css') screen and (min-width: 481px);
+
+/* Mobile styles */
+@import url('/mobile.css') screen and (max-width: 480px);
